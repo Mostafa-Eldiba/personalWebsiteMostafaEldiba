@@ -109,7 +109,17 @@ header span {
     cursor: pointer;
     display: none;
 }
-
+@media (max-width: 768px) {
+    #menu-icon {
+        display: block;
+    }
+    .navbar {
+        display: none;
+    }
+    .navbar.active {
+        display: block;
+    }
+}
 /* End Header */
 
 /* Start Home */
