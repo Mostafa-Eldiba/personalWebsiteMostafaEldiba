@@ -99,40 +99,110 @@ AOS.init();
 
 
 // Title Multi Type Text
-const textElement = document.getElementById('multiple-typed-text');
-const texts = ['Front-end Developer', 'Tax Accountant' , "Data Entry." , "CV Maker."];
-let index = 0;
-let charIndex = 0;
-let currentText = '';
-let isDeleting = false;
+// const textElement = document.getElementById('multiple-typed-text');
+// const texts = ['Front-end Developer', 'Tax Accountant' , "Data Entry." , "CV Maker."];
+// let index = 0;
+// let charIndex = 0;
+// let currentText = '';
+// let isDeleting = false;
 
-function type() {
-    currentText = texts[index];
+// function type() {
+//     currentText = texts[index];
 
-    if (isDeleting) {
-        charIndex--;
-        textElement.textContent = currentText.substring(0, charIndex);
-    } else {
-        charIndex++;
-        textElement.textContent = currentText.substring(0, charIndex);
+//     if (isDeleting) {
+//         charIndex--;
+//         textElement.textContent = currentText.substring(0, charIndex);
+//     } else {
+//         charIndex++;
+//         textElement.textContent = currentText.substring(0, charIndex);
+//     }
+
+//     // Set text color to red while typing and deleting
+//     textElement.style.color = '#ff014f';
+
+//     if (!isDeleting && charIndex === currentText.length) {
+//         setTimeout(() => isDeleting = true, 2000);
+//     } else if (isDeleting && charIndex === 0) {
+//         isDeleting = false;
+//         index = (index + 1) % texts.length;
+//     }
+
+//     setTimeout(type, isDeleting ? 50 : 100);
+// }
+
+// document.addEventListener('DOMContentLoaded', type);
+
+
+window.onload = function() {
+    AOS.init();
+
+    const textElement = document.getElementById('multiple-typed-text');
+    const texts = ['Front-end Developer', 'Tax Accountant', 'Data Entry.', 'CV Maker.'];
+    let index = 0;
+    let charIndex = 0;
+    let currentText = '';
+    let isDeleting = false;
+
+    function type() {
+        currentText = texts[index];
+
+        if (isDeleting) {
+            charIndex--;
+            textElement.textContent = currentText.substring(0, charIndex);
+        } else {
+            charIndex++;
+            textElement.textContent = currentText.substring(0, charIndex);
+        }
+
+        // Set text color to red while typing and deleting
+        textElement.style.color = '#ff014f';
+
+        if (!isDeleting && charIndex === currentText.length) {
+            setTimeout(() => isDeleting = true, 2000);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            index = (index + 1) % texts.length;
+        }
+
+        setTimeout(type, isDeleting ? 50 : 100);
     }
 
-    // Set text color to red while typing and deleting
-    textElement.style.color = '#ff014f';
+    type();
 
-    if (!isDeleting && charIndex === currentText.length) {
-        setTimeout(() => isDeleting = true, 2000);
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        index = (index + 1) % texts.length;
+    let menuIcon = document.querySelector('#menu-icon');
+    let navbar = document.querySelector('.navbar');
+
+    menuIcon.onclick = () => {
+        console.log('Menu icon clicked');
+        menuIcon.classList.toggle('fa-xmark');
+        navbar.classList.toggle('active');
     }
 
-    setTimeout(type, isDeleting ? 50 : 100);
-}
+    let sections = document.querySelectorAll('section');
+    let navLinks = document.querySelectorAll('header nav a');
 
-document.addEventListener('DOMContentLoaded', type);
+    window.onscroll = () => {
+        sections.forEach(sec => {
+            let top = window.scrollY;
+            let offset = sec.offsetTop - 100;
+            let height = sec.offsetHeight;
+            let id = sec.getAttribute('id');
 
+            if (top >= offset && top < offset + height) {
+                navLinks.forEach(links => {
+                    links.classList.remove('active');
+                    document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+                });
+            }
+        });
 
+        let header = document.querySelector('header');
+        header.classList.toggle('sticky', window.scrollY > 100);
+
+        menuIcon.classList.remove('fa-xmark');
+        navbar.classList.remove('active');
+    }
+};
 
 
 
