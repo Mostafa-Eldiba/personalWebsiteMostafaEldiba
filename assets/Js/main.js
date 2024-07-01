@@ -1,18 +1,30 @@
-// Toggle Icon Navbar
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+// // Toggle Icon Navbar
+// let menuIcon = document.querySelector('#menu-icon');
+// let navbar = document.querySelector('.navbar');
 
 
-// menuIcon.addEventListener("click", () => {
+// // menuIcon.addEventListener("click", () => {
+// //     menuIcon.classList.toggle('fa-xmark');
+// //     navbar.classList.toggle('active');
+// // }) 
+
+// menuIcon.onclick = () => {
+//     console.log('Menu icon clicked');
 //     menuIcon.classList.toggle('fa-xmark');
 //     navbar.classList.toggle('active');
-// }) 
+// }
 
-menuIcon.onclick = () => {
-    console.log('Menu icon clicked');
-    menuIcon.classList.toggle('fa-xmark');
-    navbar.classList.toggle('active');
-}
+    document.addEventListener("DOMContentLoaded", function() {
+        let menuIcon = document.querySelector('#menu-icon');
+        let navbar = document.querySelector('.navbar');
+
+        menuIcon.onclick = () => {
+            console.log('Menu icon clicked');
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        }
+    });
+
 
 AOS.init();
 // Scroll Sections
