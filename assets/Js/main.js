@@ -3,12 +3,18 @@ let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
 
-menuIcon.addEventListener("click", () => {
+// menuIcon.addEventListener("click", () => {
+//     menuIcon.classList.toggle('fa-xmark');
+//     navbar.classList.toggle('active');
+// }) 
+
+menuIcon.onclick = () => {
+    console.log('Menu icon clicked');
     menuIcon.classList.toggle('fa-xmark');
     navbar.classList.toggle('active');
-}) 
+}
 
-
+AOS.init();
 // Scroll Sections
 let Sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
