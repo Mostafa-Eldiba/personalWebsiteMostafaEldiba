@@ -14,50 +14,88 @@
 //     navbar.classList.toggle('active');
 // }
 
-    document.addEventListener("DOMContentLoaded", function() {
-        let menuIcon = document.querySelector('#menu-icon');
-        let navbar = document.querySelector('.navbar');
+    // document.addEventListener("DOMContentLoaded", function() {
+    //     let menuIcon = document.querySelector('#menu-icon');
+    //     let navbar = document.querySelector('.navbar');
 
-        menuIcon.onclick = () => {
-            console.log('Menu icon clicked');
-            menuIcon.classList.toggle('fa-xmark');
-            navbar.classList.toggle('active');
-        }
-    });
+    //     menuIcon.onclick = () => {
+    //         console.log('Menu icon clicked');
+    //         menuIcon.classList.toggle('fa-xmark');
+    //         navbar.classList.toggle('active');
+    //     }
+    // });
 
+document.addEventListener("DOMContentLoaded", function() {
+    console.log('DOM fully loaded and parsed');
+
+    let menuIcon = document.querySelector('#menu-icon');
+    let navbar = document.querySelector('.navbar');
+
+    menuIcon.onclick = () => {
+        console.log('Menu icon clicked');
+        menuIcon.classList.toggle('fa-xmark');
+        navbar.classList.toggle('active');
+    }
+
+    // Scroll Sections
+    let sections = document.querySelectorAll('section');
+    let navLinks = document.querySelectorAll('header nav a');
+
+    window.onscroll = () => {
+        sections.forEach(sec => {
+            let top = window.scrollY;
+            let offset = sec.offsetTop - 100;
+            let height = sec.offsetHeight;
+            let id = sec.getAttribute('id');
+
+            if (top >= offset && top < offset + height) {
+                navLinks.forEach(links => {
+                    links.classList.remove('active');
+                    document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+                });
+            }
+        });
+
+        let header = document.querySelector('header');
+        header.classList.toggle('sticky', window.scrollY > 100);
+
+        menuIcon.classList.remove('fa-xmark');
+        navbar.classList.remove('active');
+    }
+});
 
 AOS.init();
-// Scroll Sections
-let Sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
+// // Scroll Sections
+// let Sections = document.querySelectorAll('section');
+// let navLinks = document.querySelectorAll('header nav a');
 
-window.onscroll = () => {
-    Sections.forEach(sec => {
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 100;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id');
+// window.onscroll = () => {
+//     Sections.forEach(sec => {
+//         let top = window.scrollY;
+//         let offset = sec.offsetTop - 100;
+//         let height = sec.offsetHeight;
+//         let id = sec.getAttribute('id');
         
-        if(top >= offset && top < offset + height) {
+//         if(top >= offset && top < offset + height) {
             
-            // Active Navbar Links
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                document.querySelector('header nav a[href*='+ id +']').classList.add('active')
-            });
-        }
-    });
-    // Sticky Header
-    let header = document.querySelector('header');
+//             // Active Navbar Links
+//             navLinks.forEach(links => {
+//                 links.classList.remove('active');
+//                 document.querySelector('header nav a[href*='+ id +']').classList.add('active')
+//             });
+//         }
+//     });
+//     // Sticky Header
+//     let header = document.querySelector('header');
 
-    header.classList.toggle('sticky', window.scrollY > 100);
+//     header.classList.toggle('sticky', window.scrollY > 100);
 
 
-    // Remove Toggle Icon And Navbar When Click Navbar Links (scroll)
-    menuIcon.classList.remove('fa-xmark');
-    navbar.classList.remove('active');
+//     // Remove Toggle Icon And Navbar When Click Navbar Links (scroll)
+//     menuIcon.classList.remove('fa-xmark');
+//     navbar.classList.remove('active');
     
-}
+// }
 
 
 // Title Multi Type Text
