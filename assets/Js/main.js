@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('Menu icon clicked');
         
         // menuIcon.classList.toggle('fa-xmark');
-        menuIcon.classList.toggle('fa-bars-staggered');
+        // menuIcon.classList.toggle('fa-bars-staggered');
         navbar.classList.toggle('active');
     }
 
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let header = document.querySelector('header');
         header.classList.toggle('sticky', window.scrollY > 100);
 
-        menuIcon.classList.remove('fa-xmark');
+        // menuIcon.classList.remove('fa-xmark');
         navbar.classList.remove('active');
     }
 });
