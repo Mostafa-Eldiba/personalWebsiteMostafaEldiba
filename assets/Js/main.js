@@ -4,7 +4,7 @@
 
 
 // // menuIcon.addEventListener("click", () => {
-// //     menuIcon.classList.toggle('fa-xmark');
+    // menuIcon.classList.toggle('fa-xmark');
 // //     navbar.classList.toggle('active');
 // // }) 
 
@@ -33,7 +33,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     menuIcon.onclick = () => {
         console.log('Menu icon clicked');
-        menuIcon.classList.toggle('fa-xmark');
+        
+        // menuIcon.classList.toggle('fa-xmark');
+        menuIcon.classList.toggle('fa-bars');
         navbar.classList.toggle('active');
     }
 
