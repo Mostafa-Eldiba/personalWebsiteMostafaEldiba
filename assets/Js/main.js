@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('Menu icon clicked');
         
         // menuIcon.classList.toggle('fa-xmark');
-        menuIcon.classList.toggle('fa-bars');
+        menuIcon.classList.toggle('fa-bars-staggered');
         navbar.classList.toggle('active');
     }
 
