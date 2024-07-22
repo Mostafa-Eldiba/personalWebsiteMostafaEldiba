@@ -1176,7 +1176,7 @@
   <!-- End Experience -->
 
   <!-- Start Contact -->
-  <section class="contact" id="contact" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1000">
+<!--   <section class="contact" id="contact" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1000">
     <h2 class="heading">Contact <span>Me!</span></h2>
 
     <form action="#">
@@ -1213,7 +1213,80 @@
         <button type="submit" class="btn">Submit</button>
       </div>
     </form>
-  </section>
+  </section> -->
+  <!-- Start Contact -->
+<section class="contact" id="contact" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1000">
+    <h2 class="heading">Contact <span>Me!</span></h2>
+
+    <form onsubmit="sendMail(); return false;">
+        <div class="input-box">
+            <div class="input-field">
+                <input id="contact-full-name" type="text" placeholder="Full Name" required>
+                <span class="focus"></span>
+            </div>
+
+            <div class="input-field">
+                <input id="contact-email-address" type="text" placeholder="Email Address" required>
+                <span class="focus"></span>
+            </div>
+        </div>
+
+        <div class="input-box">
+            <div class="input-field">
+                <input id="contact-mobile-number" type="number" placeholder="Mobile Number" required>
+                <span class="focus"></span>
+            </div>
+
+            <div class="input-field">
+                <input id="contact-email-subject" type="text" placeholder="Email subject" required>
+                <span class="focus"></span>
+            </div>
+        </div>
+
+        <div class="textarea-field">
+            <textarea name="" id="contact-textarea" cols="30" rows="10" placeholder="Your Message" required></textarea>
+            <span class="focus"></span>
+        </div>
+
+        <div class="btn-box btns">
+            <button type="submit" class="btn">Submit</button>
+        </div>
+
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+        <script type="text/javascript">
+            emailjs.init('X4XMKd_pW4QSK0eC_');
+
+            function sendMail() {
+                var params = {
+                    fullName: document.getElementById("contact-full-name").value,
+                    emailAddress: document.getElementById("contact-email-address").value,
+                    mobileNumber: document.getElementById("contact-mobile-number").value,
+                    emailSubject: document.getElementById("contact-email-subject").value,
+                    messageTextarea: document.getElementById("contact-textarea").value,
+                };
+
+                const serviceID = "service_rv0aw8u";
+                const templateID = "template_v1tmk3a";
+
+                emailjs.send(serviceID, templateID, params)
+                    .then(res => {
+                        document.getElementById("contact-full-name").value = "";
+                        document.getElementById("contact-email-address").value = "";
+                        document.getElementById("contact-mobile-number").value = "";
+                        document.getElementById("contact-email-subject").value = "";
+                        document.getElementById("contact-textarea").value = "";
+                        console.log(res);
+                        alert("Your message sent successfully!!");
+                    })
+                    .catch(err => console.log(err));
+            }
+        </script>
+    </form>
+</section>
+<!-- End Contact -->
+
   <!-- End Contact -->
 
   <!-- Start Footer -->
